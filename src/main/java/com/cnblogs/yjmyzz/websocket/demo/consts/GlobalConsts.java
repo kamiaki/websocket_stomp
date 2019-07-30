@@ -15,6 +15,10 @@ public class GlobalConsts {
     public static final String main_receive_url = "/main_receive_url";
     //订阅 接收 子地址1
     public static final String receive_url1 = "/receive_url1";
+    public static final String receive_url2 = "/receive_url2";
+    public static final String userTestUrl = "/userTestUrl";
+    public static final String userTestName = "userTestName";
+    public static final String userUrl = "/userUrl";
 
     //发送 主地址
     public static final String main_send_url = "/main_send_url";

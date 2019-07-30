@@ -18,12 +18,17 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker(GlobalConsts.main_receive_url);
+        //订阅前缀
+        config.enableSimpleBroker(GlobalConsts.userTestUrl, GlobalConsts.main_receive_url);
+        //用convertAndSendToUser来发送消息，用户订阅前缀
+        config.setUserDestinationPrefix(GlobalConsts.userTestUrl);
+        //发送前缀
         config.setApplicationDestinationPrefixes(GlobalConsts.main_send_url);
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        //连接ws 地址
         registry.addEndpoint(GlobalConsts.connect_sw_url).withSockJS();
     }
 

@@ -2,6 +2,7 @@ package com.cnblogs.yjmyzz.websocket.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author junmingyang
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * （应该是要同步修改其它地方）
  */
 @SpringBootApplication
+@EnableScheduling   //定时任务
 public class DemoWebSocketServer {
 
     public static void main(String[] args) {

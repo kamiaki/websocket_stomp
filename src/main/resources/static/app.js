@@ -5,6 +5,10 @@ var connect_sw_url = "/connect_sw_url";
 var main_receive_url = "/main_receive_url";
 //订阅 接收 子地址1
 var receive_url1 = "/receive_url1";
+var receive_url2 = "/receive_url2";
+var userTestUrl = "/userTestUrl";
+var userTestName = "userTestName";
+var userUrl = "/userUrl";
 //发送 主地址
 var main_send_url = "/main_send_url";
 //发送 子地址1
@@ -28,10 +32,16 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe(main_receive_url + receive_url1, function (greeting) {
+            showGreeting("receive_url1");
             showGreeting(JSON.parse(greeting.body).content);
         });
-        stompClient.subscribe(main_receive_url + receive_url1, function (greeting) {
-            showGreeting("test2");
+        stompClient.subscribe(main_receive_url + receive_url2, function (greeting) {
+            showGreeting("receive_url2");
+            showGreeting(greeting.body);
+        });
+        stompClient.subscribe(userTestUrl +"/"+ userTestName + userUrl, function (greeting) {
+            showGreeting("receive_url3");
+            showGreeting(greeting.body);
         });
     });
 }
