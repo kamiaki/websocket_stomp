@@ -29,13 +29,14 @@ public class DemoWebSocketClient {
     public static final String SEND_URL = GlobalConsts.main_send_url + GlobalConsts.send_url1;
 
     static public class MyStompSessionHandler extends StompSessionHandlerAdapter {
-
+        //设置客户端名字
         private String name;
 
         public MyStompSessionHandler(String name) {
             this.name = name;
         }
 
+        //打印头文件
         private void showHeaders(StompHeaders headers) {
             for (Map.Entry<String, List<String>> e : headers.entrySet()) {
                 System.err.print("  " + e.getKey() + ": ");
@@ -51,6 +52,7 @@ public class DemoWebSocketClient {
             }
         }
 
+        //刚连接上打印名字
         private void sendJsonMessage(StompSession session) {
             ClientMessage msg = new ClientMessage(name);
             session.send(SEND_URL, msg);
@@ -64,6 +66,7 @@ public class DemoWebSocketClient {
                     return ServerMessage.class;
                 }
 
+                //客户端接收消息
                 @Override
                 public void handleFrame(StompHeaders headers, Object payload) {
                     System.err.println(payload.toString());
@@ -76,7 +79,9 @@ public class DemoWebSocketClient {
             System.err.println("Connected! Headers:");
             showHeaders(connectedHeaders);
 
+            //接收订阅
             subscribeTopic(GlobalConsts.main_receive_url + GlobalConsts.receive_url1, session);
+            //发送消息
             sendJsonMessage(session);
 
             System.err.println("please input your new name:");

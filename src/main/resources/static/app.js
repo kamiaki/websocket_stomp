@@ -30,6 +30,9 @@ function connect() {
         stompClient.subscribe(main_receive_url + receive_url1, function (greeting) {
             showGreeting(JSON.parse(greeting.body).content);
         });
+        stompClient.subscribe(main_receive_url + receive_url1, function (greeting) {
+            showGreeting("test2");
+        });
     });
 }
 
