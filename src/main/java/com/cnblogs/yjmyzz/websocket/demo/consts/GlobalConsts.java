@@ -8,6 +8,7 @@ package com.cnblogs.yjmyzz.websocket.demo.consts;
  * @date 2018/9/24 8:25 PM
  */
 public class GlobalConsts {
+    public static final String ENABLE_SIMPLE_BROKER = "/topic";
 
     public static final String TOPIC = "/topic/greetings";
 
