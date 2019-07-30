@@ -1,9 +1,14 @@
 var stompClient = null;
-var ENABLE_SIMPLE_BROKER = "/topic";
-var TOPIC = "/topic/greetings";
-var ENDPOINT = "/gs-guide-websocket";
-var APP_PREFIX = "/app";
-var HELLO_MAPPING = "/hello";
+//连接 websocket 地址
+var connect_sw_url = "/connect_sw_url";
+//订阅 接收 主地址
+var main_receive_url = "/main_receive_url";
+//订阅 接收 子地址1
+var receive_url1 = "/receive_url1";
+//发送 主地址
+var main_send_url = "/main_send_url";
+//发送 子地址1
+var send_url1 = "/send_url1";
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -17,12 +22,12 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS(ENDPOINT);
+    var socket = new SockJS(connect_sw_url);
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe(TOPIC, function (greeting) {
+        stompClient.subscribe(main_receive_url + receive_url1, function (greeting) {
             showGreeting(JSON.parse(greeting.body).content);
         });
     });
@@ -37,7 +42,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send(APP_PREFIX + HELLO_MAPPING, {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send(main_send_url + send_url1, {}, JSON.stringify({'name': $("#name").val()}));
 }
 
 function showGreeting(message) {

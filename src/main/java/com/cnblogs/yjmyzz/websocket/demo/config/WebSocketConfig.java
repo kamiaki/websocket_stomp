@@ -18,13 +18,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker(GlobalConsts.ENABLE_SIMPLE_BROKER);
-        config.setApplicationDestinationPrefixes(GlobalConsts.APP_PREFIX);
+        config.enableSimpleBroker(GlobalConsts.main_receive_url);
+        config.setApplicationDestinationPrefixes(GlobalConsts.main_send_url);
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint(GlobalConsts.ENDPOINT).withSockJS();
+        registry.addEndpoint(GlobalConsts.connect_sw_url).withSockJS();
     }
 
 }

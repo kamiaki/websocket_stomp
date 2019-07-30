@@ -26,7 +26,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class DemoWebSocketClient {
 
-    public static final String SEND_URL = GlobalConsts.APP_PREFIX + GlobalConsts.HELLO_MAPPING;
+    public static final String SEND_URL = GlobalConsts.main_send_url + GlobalConsts.send_url1;
 
     static public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
@@ -76,7 +76,7 @@ public class DemoWebSocketClient {
             System.err.println("Connected! Headers:");
             showHeaders(connectedHeaders);
 
-            subscribeTopic(GlobalConsts.TOPIC, session);
+            subscribeTopic(GlobalConsts.main_receive_url + GlobalConsts.receive_url1, session);
             sendJsonMessage(session);
 
             System.err.println("please input your new name:");
@@ -91,7 +91,7 @@ public class DemoWebSocketClient {
         SockJsClient sockJsClient = new SockJsClient(transports);
         WebSocketStompClient stompClient = new WebSocketStompClient(sockJsClient);
         stompClient.setMessageConverter(new MappingJackson2MessageConverter());
-        String url = "ws://localhost:8080" + GlobalConsts.ENDPOINT;
+        String url = "ws://localhost:8080" + GlobalConsts.connect_sw_url;
         String name = "spring-" + ThreadLocalRandom.current().nextInt(1, 99);
         StompSessionHandler sessionHandler = new MyStompSessionHandler(name);
         StompSession session = stompClient.connect(url, sessionHandler).get();

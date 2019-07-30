@@ -18,8 +18,8 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class GreetingController {
 
-    @MessageMapping(GlobalConsts.HELLO_MAPPING)
-    @SendTo(GlobalConsts.TOPIC)
+    @MessageMapping(GlobalConsts.send_url1)
+    @SendTo(GlobalConsts.main_receive_url + GlobalConsts.receive_url1)
     public ServerMessage greeting(ClientMessage message) throws Exception {
         // 模拟延时，以便测试客户端是否在异步工作
         Thread.sleep(1000);
