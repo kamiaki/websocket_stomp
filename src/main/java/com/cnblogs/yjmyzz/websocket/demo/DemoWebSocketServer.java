@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * （应该是要同步修改其它地方）
  */
 @SpringBootApplication
-@EnableScheduling   //定时任务
+@EnableScheduling    //定时任务
 public class DemoWebSocketServer {
 
     public static void main(String[] args) {
