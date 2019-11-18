@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling    //定时任务
 public class DemoWebSocketServer {
 
+    //启动后，输入地址: http://localhost:8080/ 进行测试
     public static void main(String[] args) {
         SpringApplication.run(DemoWebSocketServer.class, args);
     }
