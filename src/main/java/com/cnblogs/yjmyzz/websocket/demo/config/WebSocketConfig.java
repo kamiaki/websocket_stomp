@@ -18,7 +18,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        //在这里设置订阅接收的主地址
+        //在这里设置订阅接收的主地址，和用户订阅的主地址
         config.enableSimpleBroker(GlobalConsts.userTestUrl, GlobalConsts.main_receive_url);
         //用convertAndSendToUser来发送消息，用户订阅前缀
         config.setUserDestinationPrefix(GlobalConsts.userTestUrl);

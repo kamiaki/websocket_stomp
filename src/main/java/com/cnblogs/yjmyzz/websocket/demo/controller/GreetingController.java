@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -39,6 +38,7 @@ public class GreetingController {
 
     /**
      * 最基本的服务器端主动推送消息给前端
+     * 返回值也可以是string
      *
      * @return
      * @throws Exception
@@ -55,6 +55,7 @@ public class GreetingController {
 
     /**
      * 以下面这种方式发送消息，前端订阅消息的方式为： 用户订阅
+     * 返回值也可以是string
      *
      * @return
      * @throws Exception
@@ -64,10 +65,10 @@ public class GreetingController {
         // 发现消息
         String dateStr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String msg = "以下面这种方式发送消息，前端订阅消息的方式为： 用户订阅，内容是发送时间:" + dateStr;
-         messagingTemplate.convertAndSendToUser(
+        messagingTemplate.convertAndSendToUser(
                 GlobalConsts.userTestName,
                 GlobalConsts.userUrl,
-                 msg
+                msg
         );
         return;
     }
