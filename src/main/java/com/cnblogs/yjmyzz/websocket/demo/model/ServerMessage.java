@@ -2,6 +2,7 @@ package com.cnblogs.yjmyzz.websocket.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author junmingyang
@@ -9,16 +10,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ServerMessage {
-
     private String content;
-
-    public ServerMessage() {
-    }
-
-    @Override
-    public String toString() {
-        return content;
-    }
-
 }
